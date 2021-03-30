@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/home_icon"
+            android:title="Home" />
+    </group>
+
+
+    <item android:title="Profile">
+        <menu>
+            <group android:checkableBehavior="single">
+
+                <item
+                    android:id="@+id/nav_profile"
+                    android:icon="@drawable/profile_icon"
+                    android:title="profile" />
+
+                <item
+                    android:id="@+id/nav_logout"
+                    android:icon="@drawable/logout_icon"
+                    android:title="Logout" />
+            </group>
+
+        </menu>
+    </item>
+
+
+    <item android:title="Communicate">
+        <menu>
+
+            <item
+                android:id="@+id/nav_rate"
+                android:title="Rate Us"
+                android:icon="@drawable/rate_icon"/>
+
+            <item
+                android:id="@+id/nav_share"
+                android:title="Share"
+                android:icon="@drawable/share_icon"/>
+
+        </menu>
+    </item>
+
+</menu>

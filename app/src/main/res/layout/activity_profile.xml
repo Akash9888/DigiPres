@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfileActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:background="@color/teal_700"
+            android:padding="20dp">
+
+            <ImageView
+                android:id="@+id/pro_pic"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/icons8_name_64"
+                tools:srcCompat="@drawable/icons8_name_64" />
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/pro_pic"
+                android:fontFamily="@font/arbutus"
+                android:includeFontPadding="false"
+                android:text="Dr. Md. Muzammel Hussain"
+                android:textColor="@color/white"
+                android:textSize="25dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/uname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/name"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/pro_pic"
+                android:includeFontPadding="false"
+                android:text="Mz_100"
+                android:textColor="@color/white"
+                android:textSize="18dp" />
+
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:layout_marginTop="-100dp">
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="125dp"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
+                app:cardBackgroundColor="@color/teal_700"
+                app:cardElevation="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="5dp">
+
+                    <ImageView
+                        android:id="@+id/payment_icon"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/money_icon"
+                        android:layout_centerHorizontal="true"/>
+
+                    <TextView
+                        android:id="@+id/payment_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:fontFamily="@font/arbutus"
+                        android:includeFontPadding="false"
+                        android:text="$0000"
+                        android:textColor="@color/white"
+                        android:textSize="20dp" />
+
+                    <TextView
+                        android:id="@+id/payment_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/payment_label"
+                        android:layout_centerHorizontal="true"
+                        android:includeFontPadding="false"
+                        android:text="Balance"
+                        android:textColor="@color/white"
+                        android:textSize="14dp" />
+
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="125dp"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
+                app:cardBackgroundColor="@color/teal_700"
+                app:cardElevation="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="5dp">
+
+                    <ImageView
+                        android:id="@+id/count_icon"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/icons8_one_page_50"
+                        android:layout_centerHorizontal="true"/>
+
+                    <TextView
+                        android:id="@+id/count_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:fontFamily="@font/arbutus"
+                        android:includeFontPadding="false"
+                        android:text="00"
+                        android:textColor="@color/white"
+                        android:textSize="20dp" />
+
+                    <TextView
+                        android:id="@+id/count_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/count_label"
+                        android:layout_centerInParent="true"
+                        android:text="Num. of patient"
+                        android:textColor="@color/white"
+                        android:textSize="14dp" />
+
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:orientation="vertical">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/full_name"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="5dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+
+                    android:drawableLeft="@drawable/profile_icon"
+                    android:text="Md. Muzammel Hussain"
+                    android:drawablePadding="10dp"
+                    android:inputType="textMultiLine"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/degree"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="5dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+
+                    android:drawableLeft="@drawable/book_icon"
+                    android:text="MBBS (CU), BCS (Health), DLO (DU)"
+                    android:drawablePadding="10dp"
+                    android:inputType="textMultiLine"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/field"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="5dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+
+                    android:text="ENT Speacialist &amp; Surgeon"
+                    android:drawableLeft="@drawable/best_icon"
+                    android:drawablePadding="10dp"
+                    android:inputType="textMultiLine"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/regi"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="5dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:text="A-12145"
+                    android:drawableLeft="@drawable/key_icon"
+                    android:drawablePadding="10dp"
+                    android:inputType="text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/email"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="5dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+
+                    android:text="akash.tushar98@gmail.com"
+                    android:drawableLeft="@drawable/mail_icon"
+                    android:drawablePadding="10dp"
+                    android:inputType="textEmailAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/phone"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="5dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+
+                    android:text="01711433025"
+                    android:drawableLeft="@drawable/phone_icon"
+                    android:drawablePadding="10dp"
+                    android:inputType="phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/rugi_page"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Update"
+                android:layout_marginTop="5dp" />
+
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

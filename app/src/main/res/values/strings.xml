@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">DigiPres</string>
+    <string name="submit">SUBMIT</string>
+    <string name="email_address">Email Address</string>
+    <string name="please_enter_your_email_address_for_recover_password">Please enter your email address for recover password</string>
+    <string name="digipress">DigiPress</string>
+    <string name="log_in">Log in.</string>
+    <string name="rgistration_number">Rgistration number</string>
+
+    <string name="patient_name">Patient name</string>
+    <string name="done">Done</string>
+    <string name="drugs">Drugs</string>
+    <string name="advice">Advice</string>
+    <string name="rr">RR</string>
+    <string name="cc">CC</string>
+    <string name="search">Search</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="todo">TODO</string>
+</resources>

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "941059515116",
+    "project_id": "digipres-3db39",
+    "storage_bucket": "digipres-3db39.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:941059515116:android:2637d3f37021131e387bc9",
+        "android_client_info": {
+          "package_name": "com.androidproject.digipres"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "941059515116-6ji4kdsr6lq4m5emme037ivk7jspmved.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZtKVqr-OY5yHgIOIUlKeQts7a4u-yYDQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "941059515116-6ji4kdsr6lq4m5emme037ivk7jspmved.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
