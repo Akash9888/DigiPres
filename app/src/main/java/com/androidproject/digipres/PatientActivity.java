@@ -3,6 +3,9 @@ package com.androidproject.digipres;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
@@ -13,14 +16,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 
 public class PatientActivity extends AppCompatActivity {
 
-    TextInputLayout rugiName, rugiPhone, rugiAge,  rugiBp, rugiTemp, rugiPulse, rugiWeight, rugiHeight ;
+    TextInputLayout rugiName, rugiPhone, rugiAge, rugiGender, rugiBp, rugiTemp, rugiPulse, rugiWeight, rugiHeight ;
     Button createPres;
     ProgressBar ProgressBar;
-    RadioButton rugiGender;
-    RadioGroup Radio_group;
+    AutoCompleteTextView ATV;
+
+    ArrayList arrayList_gender;
+    ArrayAdapter<String>arrayAdapter_gender;
+
+    String atv_gender;
 
 
     @Override
@@ -32,7 +40,8 @@ public class PatientActivity extends AppCompatActivity {
         rugiName = findViewById(R.id.rugi_name);
         rugiPhone= findViewById(R.id.rugi_phone);
         rugiAge = findViewById(R.id.rugi_age);
-        Radio_group = findViewById(R.id.radio_group);
+        rugiGender = findViewById(R.id.rugi_gender);
+        ATV = findViewById(R.id.atv);
         rugiBp = findViewById(R.id.rugi_bp);
         rugiTemp= findViewById(R.id.rugi_temp);
         rugiPulse = findViewById(R.id.rugi_pulse);
@@ -41,14 +50,31 @@ public class PatientActivity extends AppCompatActivity {
         createPres=findViewById(R.id.create_pres);
         ProgressBar=findViewById(R.id.Progress_bar);
 
+        spiner_activity();
+
         createPres.setOnClickListener(this::onClick);
 
     }
 
+    private void spiner_activity() {
+        arrayList_gender = new ArrayList<>();
+        arrayList_gender.add("Male");
+        arrayList_gender.add("Female");
+        arrayList_gender.add("Other");
+
+        arrayAdapter_gender = new ArrayAdapter<>(getApplicationContext(),R.layout.support_simple_spinner_dropdown_item,arrayList_gender);
+        ATV.setAdapter(arrayAdapter_gender);
+        ATV.setThreshold(1);
+    }
+
     private void onClick(View view) {
 
-        int selected_gender= Radio_group.getCheckedRadioButtonId();
-        rugiGender = findViewById(selected_gender);
+        ATV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+               atv_gender =ATV.getText().toString();
+            }
+        });
 
         if (!valid_name() || !valid_phone() || !valid_Age() || !valid_Gender() || !valid_Bp() || !valid_Temp() || !valid_Pulse() || !valid_weight() || !valid_height()){
             return;
@@ -60,7 +86,7 @@ public class PatientActivity extends AppCompatActivity {
         String name = rugiName.getEditText().getText().toString();
         String phone = rugiPhone.getEditText().getText().toString();
         String age = rugiAge.getEditText().getText().toString();
-        String gender =rugiGender.getText().toString();
+        String gender = atv_gender;
         String bp = rugiBp.getEditText().getText().toString();
         String temp= rugiTemp.getEditText().getText().toString();
         String pulse = rugiPulse.getEditText().getText().toString();
@@ -177,7 +203,7 @@ public class PatientActivity extends AppCompatActivity {
     }
 
     private boolean valid_Gender() {
-        String val=rugiGender.getText().toString();
+        String val=rugiGender.toString();
 
         return !val.isEmpty();
     }
