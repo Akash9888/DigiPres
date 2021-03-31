@@ -165,13 +165,7 @@ public class FinalActivity extends AppCompatActivity {
         document.close();
         Toast.makeText(this, "PDF is created!!!", Toast.LENGTH_SHORT).show();
 
-
-        store_pdf();
         share_pdf();
-
-        Intent intent = new Intent (FinalActivity.this,DeciderActivity.class);
-        startActivity(intent);
-
     }
 
     private void store_pdf() {
@@ -193,6 +187,8 @@ public class FinalActivity extends AppCompatActivity {
         intentShare.setType("application/pdf");
         intentShare.putExtra(Intent.EXTRA_STREAM, Uri.parse("file://"+file));
         startActivity(Intent.createChooser(intentShare, "Share this file..."));
+
+        store_pdf();
 
     }
 
@@ -218,7 +214,6 @@ public class FinalActivity extends AppCompatActivity {
         String Temp = intent.getStringExtra("keytemp");
         String Pulse = intent.getStringExtra("keypulse");
         String Gender = intent.getStringExtra("keygender");
-        //String Nv = intent.getStringExtra("keycnt");
         String Cc = intent.getStringExtra("keycc");
         String Rr = intent.getStringExtra("keyrr");
         String Adv = intent.getStringExtra("keyadv");
@@ -226,11 +221,8 @@ public class FinalActivity extends AppCompatActivity {
 
         number_key = Mobile;
 
-
-
         p_Name.setText(Name);
         p_Mobile.setText(Mobile);
-        //p_Nv.setText(Nv);
         p_Age.setText(Age);
         p_Weight.setText(Weight);
         p_Height.setText(Height);
@@ -274,13 +266,6 @@ public class FinalActivity extends AppCompatActivity {
                 d_Regi.setText("Reg:No."+" "+regiFromDB);
                 d_Email.setText("Email:"+" "+emailFromDB);
                 d_Mobile.setText("Mobile:"+" "+phoneFromDB);
-
-                /*d_Name.setText(nameFromDB);
-                d_Degree.setText(degreeFromDB);
-                d_Field.setText(fieldFromDB);
-                d_Regi.setText(regiFromDB);
-                d_Email.setText(emailFromDB);
-                d_Mobile.setText(phoneFromDB);*/
             }
 
             @Override
@@ -290,4 +275,8 @@ public class FinalActivity extends AppCompatActivity {
         });
     }
 
+    public void back_decider(View view) {
+        Intent intent = new Intent (FinalActivity.this,DeciderActivity.class);
+        startActivity(intent);
+    }
 }

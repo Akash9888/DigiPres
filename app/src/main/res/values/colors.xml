@@ -14,6 +14,9 @@
     <color name="BurlyWood">#DEB887</color>
     <color name="DarkRed">#8B0000</color>
     <color name="DarkGreen">#006400</color>
+    <color name="DarkGray">#A9A9A9</color>
+    <color name="Wheat">#F5DEB3</color>
+    <color name="Khaki">#F0E68C</color>
 
 
 </resources>

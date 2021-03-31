@@ -50,13 +50,13 @@ public class PatientActivity extends AppCompatActivity {
         createPres=findViewById(R.id.create_pres);
         ProgressBar=findViewById(R.id.Progress_bar);
 
-        spiner_activity();
+        gender_activity();
 
         createPres.setOnClickListener(this::onClick);
 
     }
 
-    private void spiner_activity() {
+    private void gender_activity() {
         arrayList_gender = new ArrayList<>();
         arrayList_gender.add("Male");
         arrayList_gender.add("Female");
@@ -65,16 +65,16 @@ public class PatientActivity extends AppCompatActivity {
         arrayAdapter_gender = new ArrayAdapter<>(getApplicationContext(),R.layout.support_simple_spinner_dropdown_item,arrayList_gender);
         ATV.setAdapter(arrayAdapter_gender);
         ATV.setThreshold(1);
-    }
-
-    private void onClick(View view) {
 
         ATV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-               atv_gender =ATV.getText().toString();
+                atv_gender =ATV.getText().toString();
             }
         });
+    }
+
+    private void onClick(View view) {
 
         if (!valid_name() || !valid_phone() || !valid_Age() || !valid_Gender() || !valid_Bp() || !valid_Temp() || !valid_Pulse() || !valid_weight() || !valid_height()){
             return;
@@ -115,14 +115,14 @@ public class PatientActivity extends AppCompatActivity {
         intent.putExtra("keypulse",pulse);
         intent.putExtra("keygender",gender);
 
-       startActivity(intent);
+        startActivity(intent);
 
     }
 
     private double Celcious_Cal(String temp) {
-          double faren = Double.parseDouble(temp);
-          double value =  (faren-32)*(0.5556);
-          return Double.parseDouble(new DecimalFormat("##.##").format(value));
+        double faren = Double.parseDouble(temp);
+        double value =  (faren-32)*(0.5556);
+        return Double.parseDouble(new DecimalFormat("##.##").format(value));
     }
 
     private double BMI_Cal(String height, String weight) {
