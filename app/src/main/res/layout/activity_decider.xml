@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/omg"
     android:id="@+id/drawer_layout"
     tools:context=".DeciderActivity"
     android:fitsSystemWindows="true"
@@ -21,48 +20,32 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@drawable/omg">
 
         <include
             android:id="@+id/toolbar"
             layout="@layout/toolbar"
             android:background="#FFFFFF" />
 
-        <LinearLayout
-            android:id="@+id/linear_layout"
-            android:layout_below="@id/toolbar"
-            android:layout_width="match_parent"
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floating_btn"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="30dp"
-                android:src="@drawable/search"/>
-            <EditText
-                android:id="@+id/search_bar"
-                android:layout_width="260dp"
-                android:layout_height="40dp"
-                android:layout_marginLeft="2dp"
-                android:hint="@string/search"
-                android:textSize="20dp"/>
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="+"
-                android:textSize="25dp"
-                android:backgroundTint="@color/teal_700"
-                android:onClick="pres_page" />
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="340dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="700dp"
+            android:elevation="5dp"
+            android:onClick="pres_page"
+            android:src="@drawable/add"
+            app:fabSize="mini" />
 
 
 
 
 
-        </LinearLayout>
+
 
     </RelativeLayout>
 

@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +32,7 @@ public class DeciderActivity extends AppCompatActivity implements NavigationView
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
+
 
 
 
@@ -72,7 +74,6 @@ public class DeciderActivity extends AppCompatActivity implements NavigationView
 
     public void pres_page(View view) {
         Intent intent = new Intent(getApplicationContext(), PatientActivity.class);
-
         startActivity(intent);
     }
 
