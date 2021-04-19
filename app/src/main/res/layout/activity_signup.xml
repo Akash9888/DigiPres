@@ -56,9 +56,10 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginTop="5dp"
+            android:textColorHint="#AF1449"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
             <com.google.android.material.textfield.TextInputEditText
-                android:inputType="text"
+                android:inputType="textMultiLine"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
         </com.google.android.material.textfield.TextInputLayout>
@@ -71,9 +72,10 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginTop="5dp"
+            android:textColorHint="#AF1449"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
             <com.google.android.material.textfield.TextInputEditText
-                android:inputType="text"
+                android:inputType="textMultiLine"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
         </com.google.android.material.textfield.TextInputLayout>
@@ -82,14 +84,51 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/Reg_Field"
-            android:hint="Special field"
+            android:hint="Specialization "
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginTop="5dp"
+            android:textColorHint="#AF1449"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             tools:ignore="HardcodedText">
             <com.google.android.material.textfield.TextInputEditText
-                android:inputType="text"
+                android:inputType="textMultiLine"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/Reg_Position"
+            android:hint="Position"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:textColorHint="#AF1449"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            tools:ignore="HardcodedText">
+            <com.google.android.material.textfield.TextInputEditText
+                android:inputType="textMultiLine"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/Reg_Office"
+            android:hint="Office"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:textColorHint="#AF1449"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            tools:ignore="HardcodedText">
+            <com.google.android.material.textfield.TextInputEditText
+                android:inputType="textMultiLine"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
@@ -104,6 +143,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginTop="5dp"
+            android:textColorHint="#AF1449"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
             <com.google.android.material.textfield.TextInputEditText
                 android:inputType="text"
@@ -119,7 +159,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginTop="5dp"
-
+            android:textColorHint="#AF1449"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -136,6 +176,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginTop="5dp"
+            android:textColorHint="#AF1449"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -151,6 +192,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginTop="5dp"
+            android:textColorHint="#AF1449"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
             <com.google.android.material.textfield.TextInputEditText
                 android:inputType="text"
@@ -167,6 +209,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             app:passwordToggleEnabled="true"
+            android:textColorHint="#AF1449"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -186,6 +229,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
+            android:backgroundTint="@color/teal_700"
             android:text="signup"/>
 
         <ProgressBar
@@ -195,7 +239,6 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:visibility="invisible" />
-        <!--android:onClick="create_acc"/-->
 
 
     </LinearLayout>

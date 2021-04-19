@@ -1,22 +1,23 @@
 package com.androidproject.digipres;
 
 public class UserHelperClass {
-    String doctor_name, doctor_degree, doctor_field, doctor_regi, doctor_email, doctor_phone, doctor_un, doctor_password;
+    String doctor_name, doctor_degree, doctor_field, doctor_position, doctor_office, doctor_regi, doctor_email, doctor_phone, doctor_un, doctor_password;
 
     public UserHelperClass() {
 
     }
 
-    public UserHelperClass(String doctor_name, String doctor_degree, String doctor_field, String doctor_regi, String doctor_email, String doctor_phone, String doctor_un, String doctor_password) {
+    public UserHelperClass(String doctor_name, String doctor_degree, String doctor_field, String doctor_position, String doctor_office, String doctor_regi, String doctor_email, String doctor_phone, String doctor_un, String doctor_password) {
         this.doctor_name = doctor_name;
         this.doctor_degree = doctor_degree;
         this.doctor_field = doctor_field;
+        this.doctor_position = doctor_position;
+        this.doctor_office = doctor_office;
         this.doctor_regi = doctor_regi;
         this.doctor_email = doctor_email;
         this.doctor_phone = doctor_phone;
         this.doctor_un = doctor_un;
         this.doctor_password = doctor_password;
-
     }
 
     public String getDoctor_name() {
@@ -27,7 +28,6 @@ public class UserHelperClass {
         this.doctor_name = doctor_name;
     }
 
-
     public String getDoctor_degree() {
         return doctor_degree;
     }
@@ -35,7 +35,6 @@ public class UserHelperClass {
     public void setDoctor_degree(String doctor_degree) {
         this.doctor_degree = doctor_degree;
     }
-
 
     public String getDoctor_field() {
         return doctor_field;
@@ -45,6 +44,21 @@ public class UserHelperClass {
         this.doctor_field = doctor_field;
     }
 
+    public String getDoctor_position() {
+        return doctor_position;
+    }
+
+    public void setDoctor_position(String doctor_position) {
+        this.doctor_position = doctor_position;
+    }
+
+    public String getDoctor_office() {
+        return doctor_office;
+    }
+
+    public void setDoctor_office(String doctor_office) {
+        this.doctor_office = doctor_office;
+    }
 
     public String getDoctor_regi() {
         return doctor_regi;
@@ -54,7 +68,6 @@ public class UserHelperClass {
         this.doctor_regi = doctor_regi;
     }
 
-
     public String getDoctor_email() {
         return doctor_email;
     }
@@ -62,7 +75,6 @@ public class UserHelperClass {
     public void setDoctor_email(String doctor_email) {
         this.doctor_email = doctor_email;
     }
-
 
     public String getDoctor_phone() {
         return doctor_phone;
@@ -72,22 +84,19 @@ public class UserHelperClass {
         this.doctor_phone = doctor_phone;
     }
 
-
     public String getDoctor_un() {
         return doctor_un;
     }
 
     public void setDoctor_un(String doctor_un) {
-        this.doctor_un= doctor_un;
+        this.doctor_un = doctor_un;
     }
-
-
 
     public String getDoctor_password() {
         return doctor_password;
     }
 
-    public void setDoctor_password(String doctor_password) { this.doctor_password = doctor_password;}
-
-
+    public void setDoctor_password(String doctor_password) {
+        this.doctor_password = doctor_password;
+    }
 }

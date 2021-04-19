@@ -1,21 +1,19 @@
 package com.androidproject.digipres;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-
-import android.annotation.SuppressLint;
-import android.content.Intent;
-import android.os.Bundle;
-import android.preference.PreferenceActivity;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -32,7 +30,11 @@ public class DeciderActivity extends AppCompatActivity implements NavigationView
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
+    TextView Header_Un, Header_Email;
 
+    FirebaseUser user;
+    DatabaseReference reference;
+    String userID, unFromDB, emailFromDB;
 
 
 
@@ -46,6 +48,8 @@ public class DeciderActivity extends AppCompatActivity implements NavigationView
         toolbar = findViewById(R.id.toolbar);
 
 
+       show_doc_info();
+
 
         setSupportActionBar(toolbar);
 
@@ -58,8 +62,42 @@ public class DeciderActivity extends AppCompatActivity implements NavigationView
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setCheckedItem(R.id.nav_home);
 
+
     }
 
+    private void show_doc_info() {
+
+        navigationView = findViewById(R.id.nav_view);
+        View HeaderView=navigationView.getHeaderView(0);
+        Header_Un = HeaderView.findViewById(R.id.header_un);
+        Header_Email = HeaderView.findViewById(R.id.header_email);
+
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        reference = FirebaseDatabase.getInstance().getReference("Doctors");
+        userID = user.getUid();
+
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Doctors");
+        Query chekUser = reference.orderByChild(userID);
+
+        chekUser.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+
+                unFromDB = snapshot.child(userID).child("doctor_un").getValue(String.class);
+                emailFromDB = snapshot.child(userID).child("doctor_email").getValue(String.class);
+
+                Header_Un.setText(unFromDB);
+                Header_Email.setText(emailFromDB);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText( DeciderActivity.this, "Something Wrong",Toast.LENGTH_LONG).show();
+            }
+        });
+    }
 
 
     @Override
@@ -72,10 +110,6 @@ public class DeciderActivity extends AppCompatActivity implements NavigationView
         }
     }
 
-    public void pres_page(View view) {
-        Intent intent = new Intent(getApplicationContext(), PatientActivity.class);
-        startActivity(intent);
-    }
 
     @SuppressLint("NonConstantResourceId")
     @Override
@@ -111,5 +145,15 @@ public class DeciderActivity extends AppCompatActivity implements NavigationView
 
 
         return true;
+    }
+
+    public void new_patient(View view) {
+        Intent intent = new Intent(DeciderActivity.this,PatientActivity.class);
+        startActivity(intent);
+    }
+
+    public void exsisting_patient(View view) {
+        Intent intent = new Intent(DeciderActivity.this,ExsistingPatient_Activity.class);
+        startActivity(intent);
     }
 }

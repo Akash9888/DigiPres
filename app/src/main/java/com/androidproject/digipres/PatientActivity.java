@@ -8,15 +8,18 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ProgressBar;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class PatientActivity extends AppCompatActivity {
 
@@ -28,14 +31,16 @@ public class PatientActivity extends AppCompatActivity {
     ArrayList arrayList_gender;
     ArrayAdapter<String>arrayAdapter_gender;
 
-    String atv_gender;
+    String atv_gender, userID;
+    FirebaseUser user;
+    DatabaseReference reference;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient);
-
 
         rugiName = findViewById(R.id.rugi_name);
         rugiPhone= findViewById(R.id.rugi_phone);
@@ -101,21 +106,40 @@ public class PatientActivity extends AppCompatActivity {
         String F_temp = String.valueOf(FC);
         temp = temp + "/" + F_temp;
 
+        PatientHelperClass patientHelperClass = new PatientHelperClass(name, age, phone, gender, pulse, bp, temp, weight, height, bmi);
 
-        Intent intent = new Intent(getApplicationContext(), PrescriptionActivity.class);
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        userID = user.getUid();
 
-        intent.putExtra("keyname",name);
-        intent.putExtra("keyphone",phone);
-        intent.putExtra("keyage",age);
-        intent.putExtra("keyweight",weight);
-        intent.putExtra("keyheight",height);
-        intent.putExtra("keybmi",bmi);
-        intent.putExtra("keybp",bp);
-        intent.putExtra("keytemp",temp);
-        intent.putExtra("keypulse",pulse);
-        intent.putExtra("keygender",gender);
+        String finalTemp = temp;
+        FirebaseDatabase.getInstance().getReference(String.valueOf(userID))
+                .child(phone).setValue(patientHelperClass).addOnCompleteListener(task1 -> {
+            if (task1.isSuccessful()){
+                Toast.makeText(PatientActivity.this, "Patient Account created successfully",Toast.LENGTH_LONG).show();
+                ProgressBar.setVisibility(View.GONE);
 
-        startActivity(intent);
+                Intent intent = new Intent(getApplicationContext(), PrescriptionActivity.class);
+
+                intent.putExtra("keyname",name);
+                intent.putExtra("keyphone",phone);
+                intent.putExtra("keyage",age);
+                intent.putExtra("keyweight",weight);
+                intent.putExtra("keyheight",height);
+                intent.putExtra("keybmi",bmi);
+                intent.putExtra("keybp",bp);
+                intent.putExtra("keytemp", finalTemp);
+                intent.putExtra("keypulse",pulse);
+                intent.putExtra("keygender",gender);
+
+                startActivity(intent);
+            }
+            else{
+                Exception error = task1.getException();
+                Toast.makeText(PatientActivity.this, "Error " + error,Toast.LENGTH_LONG).show();
+                ProgressBar.setVisibility(View.GONE);
+
+            }
+        });
 
     }
 
@@ -134,7 +158,7 @@ public class PatientActivity extends AppCompatActivity {
     }
 
     private boolean valid_height() {
-        String val=rugiHeight.getEditText().getText().toString();
+        String val= Objects.requireNonNull(rugiHeight.getEditText()).getText().toString();
 
         if(val.isEmpty()){
             rugiHeight.setError("Field cann't be empty");
@@ -148,7 +172,7 @@ public class PatientActivity extends AppCompatActivity {
     }
 
     private boolean valid_weight() {
-        String val=rugiWeight.getEditText().getText().toString();
+        String val= Objects.requireNonNull(rugiWeight.getEditText()).getText().toString();
 
         if(val.isEmpty()){
             rugiWeight.setError("Field cann't be empty");

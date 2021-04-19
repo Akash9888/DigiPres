@@ -1,25 +1,22 @@
  package com.androidproject.digipres;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ProgressBar;
-import android.widget.Toast;
+ import android.content.Intent;
+ import android.os.Bundle;
+ import android.util.Patterns;
+ import android.view.View;
+ import android.widget.Button;
+ import android.widget.ProgressBar;
+ import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+ import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.android.material.textfield.TextInputLayout;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.FirebaseDatabase;
+ import com.google.android.material.textfield.TextInputLayout;
+ import com.google.firebase.auth.FirebaseAuth;
+ import com.google.firebase.database.FirebaseDatabase;
 
 public class SignupActivity extends AppCompatActivity {
 
-    TextInputLayout RegName, RegDegree, RegField, RegRegi, RegEmail, RegPhone,RegUN, RegPassword;
+    TextInputLayout RegName, RegDegree, RegField, RegRegi, RegEmail, RegPhone,RegUN, RegPassword, RegPosition, RegOffice;
     Button RegSignupBtn,RegBackLoginBtn;
     ProgressBar Progress_Bar;
 
@@ -41,6 +38,9 @@ public class SignupActivity extends AppCompatActivity {
         RegPhone = findViewById(R.id.Reg_Phone);
         RegUN = findViewById(R.id.Reg_UN);
         RegPassword = findViewById(R.id.Reg_Password);
+        RegPosition = findViewById(R.id.Reg_Position);
+        RegOffice= findViewById(R.id.Reg_Office);
+
         RegSignupBtn=findViewById(R.id.Reg_Signup_Btn);
         RegBackLoginBtn=findViewById(R.id.Reg_Back_Login_Btn);
         Progress_Bar=findViewById(R.id.Progress_bar);
@@ -51,21 +51,12 @@ public class SignupActivity extends AppCompatActivity {
 
     private boolean valid_pass() {
         String pass= RegPassword.getEditText().getText().toString();
-       /* String passwordFormat = "^" +
-                "(?=.*[a-zA-Z])" +   //any letter
-                "(?=.*[@#$%^&+=])" + //atleast 1 special char
-                "(\\A\\w{4,20}\\z)" + //no white space
-                ".{4,}" +  //at least 4 char
-                 "$";*/
 
         if(pass.isEmpty()){
             RegPassword.setError("Field cann't be empty");
             return false;
         }
-       // else if(!pass.matches(passwordFormat)){
-            //RegPassword.setError("Password is too weak");
-           // return false;
-      //  }
+
         else{
             RegPassword.setError(null);
             RegPassword.setErrorEnabled(false);
@@ -114,16 +105,16 @@ public class SignupActivity extends AppCompatActivity {
 
     private boolean valid_email() {
         String email= RegEmail.getEditText().getText().toString();
-        //String emailPattern = "[a-zA-z0-9._-]+@[a-z]+\\.+[a-z]+";
 
         if(email.isEmpty()){
             RegEmail.setError("Field cann't be empty");
             return false;
         }
-        /*else if(!email.matches(emailPattern)){
-            RegEmail.setError("Invalid email address");
+
+        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+            RegEmail.setError("Wrong email format");
             return false;
-        }*/
+        }
         else{
             RegEmail.setError(null);
             RegEmail.setErrorEnabled(false);
@@ -186,6 +177,32 @@ public class SignupActivity extends AppCompatActivity {
         }
     }
 
+    private boolean valid_position() {
+        String position= RegPosition.getEditText().getText().toString();
+        if(position.isEmpty()){
+            RegPosition.setError("Field cann't be empty");
+            return false;
+        }
+        else{
+            RegPosition.setError(null);
+            RegPosition.setErrorEnabled(false);
+            return true;
+        }
+    }
+
+    private boolean valid_office() {
+        String office= RegOffice.getEditText().getText().toString();
+        if(office.isEmpty()){
+            RegOffice.setError("Field cann't be empty");
+            return false;
+        }
+        else{
+            RegOffice.setError(null);
+            RegOffice.setErrorEnabled(false);
+            return true;
+        }
+    }
+
 
 
     public void login_page(View view) {
@@ -196,7 +213,7 @@ public class SignupActivity extends AppCompatActivity {
     private void onClick(View v) {
 
 
-        if (!valid_name() || !valid_degree() || !valid_field() || !valid_regi() || !valid_email() || !valid_phone() || !valid_un() || !valid_pass()){
+        if (!valid_name() || !valid_degree() || !valid_field() || !valid_position() || !valid_office() || !valid_regi() || !valid_email() || !valid_phone() || !valid_un() || !valid_pass()){
             return;
         }
 
@@ -210,13 +227,16 @@ public class SignupActivity extends AppCompatActivity {
         String doctor_phone = RegPhone.getEditText().getText().toString();
         String doctor_un = RegUN.getEditText().getText().toString();
         String doctor_password = RegPassword.getEditText().getText().toString();
+        String doctor_position = RegPosition.getEditText().getText().toString();
+        String doctor_office = RegOffice.getEditText().getText().toString();
 
 
 
         mAuth.createUserWithEmailAndPassword(doctor_email, doctor_password)
                 .addOnCompleteListener(task -> {
                     if(task.isSuccessful()){
-                        UserHelperClass helperClass = new UserHelperClass(doctor_name, doctor_degree, doctor_field, doctor_regi, doctor_email, doctor_phone, doctor_un, doctor_password);
+                        UserHelperClass helperClass = new UserHelperClass(doctor_name, doctor_degree,
+                                doctor_field, doctor_position, doctor_office, doctor_regi, doctor_email, doctor_phone, doctor_un, doctor_password);
 
                         FirebaseDatabase.getInstance().getReference("Doctors")
                                 .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
@@ -244,4 +264,6 @@ public class SignupActivity extends AppCompatActivity {
                     }
                 });
     }
+
+
 }

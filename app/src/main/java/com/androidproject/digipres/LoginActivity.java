@@ -17,6 +17,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Objects;
 
@@ -35,6 +36,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+
+        //hooks
         loginBtn=findViewById(R.id.login_btn);
         forgotBtn=findViewById(R.id.forgot_btn);
         signupBtn=findViewById(R.id.signup_btn);
@@ -45,8 +48,6 @@ public class LoginActivity extends AppCompatActivity {
 
 
         loginBtn.setOnClickListener(this::onClick);
-
-
     }
 
 
@@ -106,25 +107,31 @@ public class LoginActivity extends AppCompatActivity {
          String enteredPass=loginPass.getEditText().getText().toString().trim();
 
 
-
          mAuth.signInWithEmailAndPassword(enteredEmail, enteredPass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
              @Override
              public void onComplete(@NonNull Task<AuthResult> task) {
                  if(task.isSuccessful()){
+                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-                        if(check_Box.isChecked()){
+                     if(user.isEmailVerified()){
+                         if(check_Box.isChecked()){
+                             String email = enteredEmail;
+                             String password = enteredPass;
+                             int temp=1;
 
-                            String email = enteredEmail;
-                            String password = enteredPass;
-                            int temp=2;
-                            Session session = new Session(email,password,temp);
-                            SessionManagement sessionManagement = new SessionManagement(LoginActivity.this);
-                            sessionManagement.saveSession(session);
+                             Session session = new Session(email,password,temp);
+                             SessionManagement sessionManagement = new SessionManagement(LoginActivity.this);
+                             sessionManagement.saveSession(session);
 
-                            move_to_decider();
-                        }else{
-                            move_to_decider();
-                        }
+                             move_to_decider();
+                         }else{
+                             move_to_decider();
+                         }
+                     }
+                     else{
+                         user.sendEmailVerification();
+                         Toast.makeText(LoginActivity.this, "Please check your email to verify account " ,Toast.LENGTH_LONG).show();
+                     }
 
                  }
                  else{
@@ -134,13 +141,6 @@ public class LoginActivity extends AppCompatActivity {
                  }
              }
          });
-
-             /*else{
-                 loginPass.setError("Wrong password");
-                 Progress_Bar.setVisibility(View.GONE);
-             }*/
-
-
     }
 
     private void move_to_decider() {

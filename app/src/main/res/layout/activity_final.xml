@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="5dp"
-    tools:context=".FinalActivity">
+    tools:context=".FinalActivity"
+    android:background="@color/LemonChiffon">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -59,6 +60,28 @@
                         android:textSize="18dp"
                         android:textColor="@color/DarkRed"
                         android:textStyle="bold"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:textAlignment="center"/>
+                    <TextView
+                        android:id="@+id/doc_position"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Asst. Professor, Department of ENT"
+                        android:textSize="18dp"
+                        android:textColor="@color/black"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:textAlignment="center"/>
+                    <TextView
+                        android:id="@+id/doc_office"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Sylhet M.A.G. Osmani Medical Collge"
+                        android:textSize="18dp"
+                        android:textColor="@color/black"
                         android:layout_marginLeft="5dp"
                         android:layout_marginRight="5dp"
                         android:layout_marginBottom="5dp"
@@ -379,8 +402,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/front"
-                android:background="@drawable/omg">
+                android:background="@drawable/omg"
+                android:layout_below="@id/front">
 
                 <LinearLayout
                     android:id="@+id/first"
@@ -463,6 +486,7 @@
                         android:id="@+id/image_rx"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
                         android:src="@drawable/icons8_prescription_64" />
 
                     <TextView
@@ -499,7 +523,9 @@
                 android:layout_marginRight="5dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
-                android:text="save &amp; share" />
+                android:backgroundTint="@color/teal_700"
+                android:text="share"
+                android:onClick="share_pres"/>
 
             <Button
                 android:id="@+id/back_decider"
@@ -510,8 +536,9 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginBottom="5dp"
                 android:layout_marginTop="5dp"
-                android:text="Back to home"
-                android:onClick="back_decider"/>
+                android:text="Print"
+                android:backgroundTint="@color/teal_700"
+                android:onClick="print_pres"/>
 
 
 

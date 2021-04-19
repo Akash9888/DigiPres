@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".PatientActivity">
+    tools:context=".OldPatientActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -21,10 +21,29 @@
 
 
         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Phone number"
+            android:textColor="@color/black"
+            android:layout_margin="5dp"
+            android:textStyle="bold"
+            android:textSize="20sp"/>
+        <TextView
+            android:id="@+id/op_phone"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text=""
+            android:textSize="20sp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:textColor="@color/black"
+            android:background="@drawable/box"/>
+
+        <TextView
             android:id="@+id/textview_signup_02"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Enter patient details"
+            android:text="Update patient details"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             android:textSize="20sp"
@@ -44,7 +63,7 @@
                 android:orientation="horizontal">
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/rugi_name"
+                    android:id="@+id/op_name"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="240dp"
                     android:layout_height="wrap_content"
@@ -61,7 +80,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/rugi_age"
+                    android:id="@+id/op_age"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -79,7 +98,7 @@
 
             </LinearLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
+           <!-- <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/rugi_phone"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
@@ -97,7 +116,7 @@
                     android:inputType="phone"
                     android:textColorHint="#AF1449" />
 
-            </com.google.android.material.textfield.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>-->
 
 
             <LinearLayout
@@ -106,7 +125,7 @@
                 android:orientation="horizontal">
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/rugi_gender"
+                    android:id="@+id/op_gender"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                     android:layout_width="190dp"
                     android:layout_height="wrap_content"
@@ -117,13 +136,13 @@
                     android:textColorHint="#AF1449">
 
                     <AutoCompleteTextView
-                        android:id="@+id/atv"
+                        android:id="@+id/op_atv"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/rugi_pulse"
+                    android:id="@+id/op_pulse"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -151,7 +170,7 @@
                 android:orientation="horizontal">
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/rugi_bp"
+                    android:id="@+id/op_bp"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="190dp"
                     android:layout_height="wrap_content"
@@ -168,7 +187,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/rugi_temp"
+                    android:id="@+id/op_temp"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -194,7 +213,7 @@
 
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/rugi_weight"
+                    android:id="@+id/op_weight"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="190dp"
                     android:layout_height="wrap_content"
@@ -213,7 +232,7 @@
 
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/rugi_height"
+                    android:id="@+id/op_height"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -233,13 +252,13 @@
             </LinearLayout>
 
             <Button
-                android:id="@+id/create_pres"
+                android:id="@+id/go_pres"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="5dp"
                 android:layout_marginLeft="5dp"
                 android:backgroundTint="@color/teal_700"
-                android:text="GO"/>
+                android:text="Next"/>
 
 
 

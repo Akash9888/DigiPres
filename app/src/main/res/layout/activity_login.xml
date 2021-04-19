@@ -14,7 +14,7 @@
         <ImageView
             android:id="@+id/image_view"
             android:layout_width="match_parent"
-            android:layout_height="128dp"
+            android:layout_height="200dp"
             android:src="@drawable/omg"
             tools:srcCompat="@drawable/omg" />
 
@@ -52,16 +52,17 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginTop="5dp"
+            android:textColorHint="#AF1449"
 
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
 
-                android:drawableLeft="@drawable/mail_icon"
+                android:drawableLeft="@drawable/mail_dark"
                 android:drawablePadding="10dp"
                 android:inputType="textEmailAddress"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
 
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -74,16 +75,16 @@
             android:layout_marginTop="5dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            app:passwordToggleEnabled="true"
+            android:textColorHint="#AF1449"
 
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
 
-                android:drawableLeft="@drawable/lock_icon"
-                android:drawablePadding="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/lock_icon"
+                android:drawablePadding="10dp"
                 android:inputType="textPassword" />
 
 
@@ -120,24 +121,26 @@
         </LinearLayout>
 
 
-        <Button
+       <Button
             android:id="@+id/login_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
+            android:backgroundTint="@color/teal_700"
             android:text="LOGIN"/>
 
 
 
-        <ProgressBar
+       <ProgressBar
             android:id="@+id/progress_bar"
             style="?android:attr/progressBarStyle"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="50dp"
             android:layout_margin="10dp"
             android:visibility="invisible" />
+
 
     </LinearLayout>
 

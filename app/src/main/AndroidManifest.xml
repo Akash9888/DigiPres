@@ -12,6 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DigiPres">
+        <activity android:name=".OldPatientActivity"></activity>
+        <activity android:name=".ExsistingPatient_Activity" />
+        <activity android:name=".UpdateActivity" />
         <activity android:name=".ResetActivity" />
         <activity android:name=".DeciderActivity" />
         <activity android:name=".FinalActivity" />

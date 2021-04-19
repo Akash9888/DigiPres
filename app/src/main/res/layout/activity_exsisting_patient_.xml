@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context=".ResetActivity">
+    tools:context=".ExsistingPatient_Activity">
 
     <ImageView
         android:id="@+id/image_view_reco"
@@ -19,7 +19,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/please_enter_your_email_address_for_recover_password"
+        android:text="Enter patient phone number"
         android:textSize="20sp"
         android:textColor="@color/black"
         android:layout_margin="10dp"/>
@@ -33,8 +33,8 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/recovery_email"
-            android:hint="@string/email_address"
+            android:id="@+id/exsisting_phone"
+            android:hint="Phome number"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginTop="5dp"
@@ -43,7 +43,8 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:drawableStart="@drawable/mail_icon"
+                android:drawableStart="@drawable/landphone_icon"
+                android:inputType="phone"
                 android:drawablePadding="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
@@ -53,14 +54,14 @@
 
 
         <Button
-            android:id="@+id/submit_btn"
+            android:id="@+id/check_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
             android:backgroundTint="@color/teal_700"
-            android:text="@string/submit"/>
+            android:text="next"/>
 
         <ProgressBar
             android:id="@+id/progress_bar"

@@ -1,54 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/drawer_layout"
-    tools:context=".DeciderActivity"
     android:fitsSystemWindows="true"
+    tools:context=".DeciderActivity"
     tools:openDrawer="start">
 
+
+
     <com.google.android.material.navigation.NavigationView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:id="@+id/nav_view"
-        app:headerLayout="@layout/header"
-        app:menu="@menu/main_menu"
-        android:layout_gravity="start"/>
+            android:id="@+id/nav_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            app:headerLayout="@layout/header"
+            app:menu="@menu/main_menu" />
 
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/omg">
-
-        <include
-            android:id="@+id/toolbar"
-            layout="@layout/toolbar"
-            android:background="#FFFFFF" />
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floating_btn"
-            android:layout_width="wrap_content"
+            android:id="@+id/tb"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="340dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="700dp"
-            android:elevation="5dp"
-            android:onClick="pres_page"
-            android:src="@drawable/add"
-            app:fabSize="mini" />
+            android:background="@drawable/omg">
+
+            <include
+                android:id="@+id/toolbar"
+                layout="@layout/toolbar"
+                android:background="#FFFFFF" />
+        <RelativeLayout
+            android:layout_below="@id/toolbar"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="match_parent">
 
 
+           <!-- <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/floating_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="320dp"
+                        android:layout_marginBottom="30dp"
+                        android:layout_alignParentBottom="true"
+                        android:elevation="4dp"
+                        android:backgroundTint="@color/teal_700"
+
+                        android:src="@drawable/add"
+                        app:fabSize="normal"
+                        android:onClick="pres_page"/>-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center"
+                android:orientation="vertical">
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="New Patient"
+                    android:backgroundTint="@color/teal_700"
+                    android:onClick="new_patient"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Exsisting Patient"
+                    android:backgroundTint="@color/teal_700"
+                    android:onClick="exsisting_patient"/>
+            </LinearLayout>
 
 
-
-
+        </RelativeLayout>
 
     </RelativeLayout>
 
 
-
 </androidx.drawerlayout.widget.DrawerLayout>
+
+

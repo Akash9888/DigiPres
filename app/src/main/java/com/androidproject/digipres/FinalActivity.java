@@ -46,7 +46,7 @@ import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 
 public class FinalActivity extends AppCompatActivity {
 
-    TextView Date, d_Name, d_Degree, d_Field, d_Regi, d_Email, d_Mobile, p_Name, p_Mobile,
+    TextView Date, d_Name, d_Degree, d_Field, d_Position, d_Office, d_Regi, d_Email, d_Mobile, p_Name, p_Mobile,
             p_Age, p_Weight, p_Height, p_Bmi, p_Bp, p_Temp, p_Pulse, p_Gender, p_Cc, p_Rr, p_Adv, p_Rx;
 
     Button btn_Share;
@@ -77,6 +77,8 @@ public class FinalActivity extends AppCompatActivity {
         d_Name= findViewById(R.id.doc_name);
         d_Degree= findViewById(R.id.doc_Degree);
         d_Field= findViewById(R.id.doc_field);
+        d_Position= findViewById(R.id.doc_position);
+        d_Office= findViewById(R.id.doc_office);
         d_Regi= findViewById(R.id.doc_regi);
         d_Email= findViewById(R.id.doc_email);
         d_Mobile= findViewById(R.id.doc_mobile);
@@ -108,7 +110,9 @@ public class FinalActivity extends AppCompatActivity {
         StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
         StrictMode.setVmPolicy(builder.build());
 
-        btn_Share.setOnClickListener(v -> activity_to_photo());
+       // btn_Share.setOnClickListener(v -> activity_to_photo());
+
+        activity_to_photo();
 
 
     }
@@ -165,7 +169,7 @@ public class FinalActivity extends AppCompatActivity {
         document.close();
         Toast.makeText(this, "PDF is created!!!", Toast.LENGTH_SHORT).show();
 
-        share_pdf();
+        //share_pdf();
     }
 
     private void store_pdf() {
@@ -256,12 +260,17 @@ public class FinalActivity extends AppCompatActivity {
                 String nameFromDB = snapshot.child(userID).child("doctor_name").getValue(String.class);
                 String degreeFromDB = snapshot.child(userID).child("doctor_degree").getValue(String.class);
                 String fieldFromDB = snapshot.child(userID).child("doctor_field").getValue(String.class);
+                String positionFromDB = snapshot.child(userID).child("doctor_position").getValue(String.class);
+                String officeFromDB = snapshot.child(userID).child("doctor_office").getValue(String.class);
                 String regiFromDB = snapshot.child(userID).child("doctor_regi").getValue(String.class);
                 String emailFromDB = snapshot.child(userID).child("doctor_email").getValue(String.class);
                 String phoneFromDB = snapshot.child(userID).child("doctor_phone").getValue(String.class);
 
                 d_Name.setText("Dr."+" "+nameFromDB);
                 d_Degree.setText(degreeFromDB);
+                d_Field.setText(fieldFromDB);
+                d_Position.setText(positionFromDB);
+                d_Office.setText(officeFromDB);
                 d_Field.setText(fieldFromDB);
                 d_Regi.setText("Reg:No."+" "+regiFromDB);
                 d_Email.setText("Email:"+" "+emailFromDB);
@@ -276,7 +285,11 @@ public class FinalActivity extends AppCompatActivity {
     }
 
     public void back_decider(View view) {
+        store_pdf();
         Intent intent = new Intent (FinalActivity.this,DeciderActivity.class);
         startActivity(intent);
+    }
+
+    public void share_pres(View view) {
     }
 }
