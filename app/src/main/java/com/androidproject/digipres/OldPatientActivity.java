@@ -52,7 +52,7 @@ public class OldPatientActivity extends AppCompatActivity {
         user = FirebaseAuth.getInstance().getCurrentUser();
         assert user != null;
         userID = user.getUid();
-        reference = FirebaseDatabase.getInstance().getReference(userID);
+        reference = FirebaseDatabase.getInstance().getReference("Patient's");
 
         op_Name = findViewById(R.id.op_name);
         op_Age = findViewById(R.id.op_age);
@@ -208,7 +208,7 @@ public class OldPatientActivity extends AppCompatActivity {
         double val = ojon/(ucha*ucha);
         double BMI= Double.parseDouble(new DecimalFormat("##.##").format(val));
         bmiFromDB=String.valueOf(BMI);
-        reference.child(phone_number).child("bmi").setValue(bmiFromDB);
+        reference.child(userID).child(phone_number).child("bmi").setValue(bmiFromDB);
         return;
     }
 
@@ -325,7 +325,7 @@ public class OldPatientActivity extends AppCompatActivity {
         Intent intent = getIntent();
         phone_number = intent.getStringExtra("keynumber");
 
-        Query chekUser = reference.orderByChild(phone_number);
+        Query chekUser = reference.child(userID).orderByChild(phone_number);
         chekUser.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

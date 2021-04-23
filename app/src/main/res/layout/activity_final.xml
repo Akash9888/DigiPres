@@ -148,7 +148,7 @@
                             android:textColor="@color/black"/>
                         <TextView
                             android:id="@+id/p_name"
-                            android:layout_width="160dp"
+                            android:layout_width="150dp"
                             android:layout_height="wrap_content"
                             android:textSize="17dp"
                             android:layout_marginTop="5dp"
@@ -195,16 +195,17 @@
                             android:text="Age:"
                             android:textSize="17dp"
                             android:textColor="@color/black"/>
+
                         <TextView
                             android:id="@+id/p_age"
-                            android:layout_width="165dp"
+                            android:layout_width="152dp"
                             android:layout_height="wrap_content"
-                            android:textSize="17dp"
                             android:layout_marginTop="5dp"
                             android:layout_marginRight="5dp"
                             android:layout_marginBottom="5dp"
+                            android:text="100"
                             android:textColor="@color/black"
-                            android:text="100"/>
+                            android:textSize="17dp" />
 
 
 
@@ -217,16 +218,17 @@
                             android:layout_marginRight="2dp"
                             android:textColor="@color/black"
                             android:text="Mobile:"/>
+
                         <TextView
                             android:id="@+id/p_mobile"
-                            android:layout_width="wrap_content"
+                            android:layout_width="123dp"
                             android:layout_height="wrap_content"
-                            android:textSize="17dp"
                             android:layout_marginTop="5dp"
                             android:layout_marginRight="5dp"
                             android:layout_marginBottom="5dp"
+                            android:text="01776774988"
                             android:textColor="@color/black"
-                            android:text="01776774988"/>
+                            android:textSize="17dp" />
 
 
                     </LinearLayout>
@@ -247,7 +249,7 @@
                         android:orientation="horizontal">
 
                         <LinearLayout
-                            android:layout_width="100dp"
+                            android:layout_width="70dp"
                             android:layout_height="50dp"
                             android:layout_margin="5dp"
                             android:orientation="vertical">
@@ -267,7 +269,7 @@
                         </LinearLayout>
 
                         <LinearLayout
-                            android:layout_width="100dp"
+                            android:layout_width="90dp"
                             android:layout_height="50dp"
                             android:layout_margin="5dp"
                             android:orientation="vertical">
@@ -287,13 +289,13 @@
                         </LinearLayout>
 
                         <LinearLayout
-                            android:layout_width="100dp"
+                            android:layout_width="90dp"
                             android:layout_height="50dp"
                             android:layout_margin="5dp"
                             android:orientation="vertical">
 
                             <TextView
-                                android:layout_width="wrap_content"
+                                android:layout_width="100dp"
                                 android:layout_height="wrap_content"
                                 android:text="Height (cm)"
                                 android:textColor="#E91E63" />
@@ -524,11 +526,10 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:backgroundTint="@color/teal_700"
-                android:text="share"
-                android:onClick="share_pres"/>
+                android:text="share"/>
 
             <Button
-                android:id="@+id/back_decider"
+                android:id="@+id/btn_print"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -537,8 +538,7 @@
                 android:layout_marginBottom="5dp"
                 android:layout_marginTop="5dp"
                 android:text="Print"
-                android:backgroundTint="@color/teal_700"
-                android:onClick="print_pres"/>
+                android:backgroundTint="@color/teal_700" />
 
 
 

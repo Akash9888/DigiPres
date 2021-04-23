@@ -35,7 +35,8 @@ public class MainActivity extends AppCompatActivity {
                 int userID = sessionManagement.getSession();
 
                 if(userID != -1){
-                    Intent intent = new Intent (MainActivity.this,DeciderActivity.class);
+                  Intent intent = new Intent (MainActivity.this,DeciderActivity.class);
+                   // Intent intent = new Intent (MainActivity.this,CollectionActivity.class);
                     startActivity(intent);
                     finish();
                 }else{

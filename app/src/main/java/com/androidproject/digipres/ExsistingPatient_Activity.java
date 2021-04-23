@@ -56,9 +56,9 @@ public class ExsistingPatient_Activity extends AppCompatActivity {
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         userID = user.getUid();
-        reference = FirebaseDatabase.getInstance().getReference(userID);
+        reference = FirebaseDatabase.getInstance().getReference("Patient's");
 
-        Query chekUser = reference.orderByChild("phone").equalTo(entered_number);
+        Query chekUser = reference.child(userID).orderByChild("phone").equalTo(entered_number);
 
         chekUser.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

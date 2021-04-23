@@ -112,8 +112,8 @@ public class PatientActivity extends AppCompatActivity {
         userID = user.getUid();
 
         String finalTemp = temp;
-        FirebaseDatabase.getInstance().getReference(String.valueOf(userID))
-                .child(phone).setValue(patientHelperClass).addOnCompleteListener(task1 -> {
+        FirebaseDatabase.getInstance().getReference("Patient's")
+                .child(userID).child(phone).setValue(patientHelperClass).addOnCompleteListener(task1 -> {
             if (task1.isSuccessful()){
                 Toast.makeText(PatientActivity.this, "Patient Account created successfully",Toast.LENGTH_LONG).show();
                 ProgressBar.setVisibility(View.GONE);

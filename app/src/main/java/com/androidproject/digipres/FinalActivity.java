@@ -33,7 +33,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -49,7 +48,7 @@ public class FinalActivity extends AppCompatActivity {
     TextView Date, d_Name, d_Degree, d_Field, d_Position, d_Office, d_Regi, d_Email, d_Mobile, p_Name, p_Mobile,
             p_Age, p_Weight, p_Height, p_Bmi, p_Bp, p_Temp, p_Pulse, p_Gender, p_Cc, p_Rr, p_Adv, p_Rx;
 
-    Button btn_Share;
+    Button btn_Share, btn_Print;
     ProgressBar progress_Bar;
     RelativeLayout Main;
     private Bitmap bitmap;
@@ -62,13 +61,12 @@ public class FinalActivity extends AppCompatActivity {
 
    String number_key, date_key,  userID;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_final);
-
-        storage = FirebaseStorage.getInstance();
-        database = FirebaseDatabase.getInstance();
 
         Date= findViewById(R.id.date);
         show_date();
@@ -104,17 +102,33 @@ public class FinalActivity extends AppCompatActivity {
         Main = findViewById(R.id.main);
 
         btn_Share = findViewById(R.id.btn_share);
+        btn_Print = findViewById(R.id.btn_print);
 
         ActivityCompat.requestPermissions(this, new String[]{READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE}, PackageManager.PERMISSION_GRANTED);
 
         StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
         StrictMode.setVmPolicy(builder.build());
 
-       // btn_Share.setOnClickListener(v -> activity_to_photo());
+        btn_Share.setOnClickListener(v -> {
+            activity_to_photo();
+            store_pdf();
+            share_pdf();
+            Toast.makeText( FinalActivity.this, "Prescription shared successfully!",Toast.LENGTH_LONG).show();
 
-        activity_to_photo();
+            back_decider();
+        });
+        btn_Print.setOnClickListener(v -> {
+            activity_to_photo();
+            store_pdf();
+            Toast.makeText( FinalActivity.this, "Prescription printed successfully!",Toast.LENGTH_LONG).show();
+            back_decider();
+        });
+    }
 
-
+    private void back_decider() {
+       Intent intent = new Intent (FinalActivity.this,DeciderActivity.class);
+       //Intent intent = new Intent (FinalActivity.this,CollectionActivity.class);
+        startActivity(intent);
     }
 
     private void activity_to_photo() {
@@ -154,7 +168,7 @@ public class FinalActivity extends AppCompatActivity {
         canvas.drawBitmap(bitmap, 0, 0 , null);
         document.finishPage(page);
 
-        @SuppressLint("SdCardPath") String targetPdf ="/sdcard/"+date_key+"_"+number_key+".pdf";
+        @SuppressLint("SdCardPath") String targetPdf ="/sdcard/"+number_key+"_"+date_key+".pdf";
 
         File filePath;
         filePath = new File(targetPdf);
@@ -167,21 +181,31 @@ public class FinalActivity extends AppCompatActivity {
         }
 
         document.close();
-        Toast.makeText(this, "PDF is created!!!", Toast.LENGTH_SHORT).show();
-
-        //share_pdf();
+        //Toast.makeText(this, "PDF is created!!!", Toast.LENGTH_SHORT).show();
     }
 
-    private void store_pdf() {
+    private void store_pdf()
+    {
 
-    StorageReference storageReference = storage.getReference();
-     @SuppressLint("SdCardPath") File file = new File("/sdcard/"+date_key+"_"+number_key+".pdf");
-     storageReference.child(number_key).child(date_key).putFile(Uri.fromFile(file));
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        assert user != null;
+        userID = user.getUid();
+        storage = FirebaseStorage.getInstance();
+        database = FirebaseDatabase.getInstance();
+
+        @SuppressLint("SdCardPath") File file = new File("/sdcard/"+number_key+"_"+date_key+".pdf");
+
+
+        storage.getReference(userID).child(number_key).child(date_key).putFile(Uri.fromFile(file)).
+                addOnSuccessListener(taskSnapshot -> {
+                    Retrive_Pdf retrive_pdf= new Retrive_Pdf(number_key+"_"+date_key+".pdf",taskSnapshot.getStorage().getDownloadUrl().toString());
+                    database.getReference(String.valueOf(userID)).child(number_key+"_"+date_key).setValue(retrive_pdf);
+                });
     }
 
     private void share_pdf() {
 
-        @SuppressLint("SdCardPath") File file = new File("/sdcard/"+date_key+"_"+number_key+".pdf");
+        @SuppressLint("SdCardPath") File file = new File("/sdcard/"+number_key+"_"+date_key+".pdf");
 
         if (!file.exists()){
             Toast.makeText(this, "File doesn't exit",Toast.LENGTH_SHORT).show();
@@ -191,8 +215,6 @@ public class FinalActivity extends AppCompatActivity {
         intentShare.setType("application/pdf");
         intentShare.putExtra(Intent.EXTRA_STREAM, Uri.parse("file://"+file));
         startActivity(Intent.createChooser(intentShare, "Share this file..."));
-
-        store_pdf();
 
     }
 
@@ -284,12 +306,4 @@ public class FinalActivity extends AppCompatActivity {
         });
     }
 
-    public void back_decider(View view) {
-        store_pdf();
-        Intent intent = new Intent (FinalActivity.this,DeciderActivity.class);
-        startActivity(intent);
-    }
-
-    public void share_pres(View view) {
-    }
 }

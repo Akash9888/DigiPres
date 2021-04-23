@@ -33,42 +33,51 @@
         <RelativeLayout
             android:layout_below="@id/toolbar"
             android:layout_width="match_parent"
-            android:gravity="center"
             android:layout_height="match_parent">
 
+            <LinearLayout
+                android:id="@+id/search_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
 
-           <!-- <com.google.android.material.floatingactionbutton.FloatingActionButton
-                        android:id="@+id/floating_btn"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="320dp"
-                        android:layout_marginBottom="30dp"
-                        android:layout_alignParentBottom="true"
-                        android:elevation="4dp"
-                        android:backgroundTint="@color/teal_700"
+                <SearchView
+                    android:id="@+id/searchView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:queryHint="Search Here"
+                    android:iconifiedByDefault="false" />
 
-                        android:src="@drawable/add"
-                        app:fabSize="normal"
-                        android:onClick="pres_page"/>-->
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/floating_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/add"
+                    app:fabSize="mini"
+                    android:layout_margin="2dp"
+                    android:onClick="identity_page"/>
+
+
+
+            </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:gravity="center"
+                android:layout_below="@id/search_bar"
+                android:layout_margin="5dp"
                 android:orientation="vertical">
-                <Button
+
+                <androidx.recyclerview.widget.RecyclerView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="New Patient"
-                    android:backgroundTint="@color/teal_700"
-                    android:onClick="new_patient"/>
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Exsisting Patient"
-                    android:backgroundTint="@color/teal_700"
-                    android:onClick="exsisting_patient"/>
+                    android:layout_height="match_parent"
+                    android:id="@+id/recycle_view"/>
+
+
+
             </LinearLayout>
+
 
 
         </RelativeLayout>

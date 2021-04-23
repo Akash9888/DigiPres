@@ -88,7 +88,6 @@ public class LoginActivity extends AppCompatActivity {
     private void onClick(View view) {
 
         if(!valid_email() || !valid_password()){
-            return;
         }
         else{
             isUser();
@@ -146,6 +145,7 @@ public class LoginActivity extends AppCompatActivity {
     private void move_to_decider() {
 
         Intent intent = new Intent (LoginActivity.this,DeciderActivity.class);
+        //Intent intent = new Intent (LoginActivity.this,CollectionActivity.class);
         startActivity(intent);
 
     }
